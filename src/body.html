@@ -1,0 +1,120 @@
+<div id="edge-vig"></div>
+<div id="vignette"></div>
+<div id="fade"></div>
+
+<div id="hud" style="display:none">
+  <div id="player-badge">
+    <div id="lvl-num">1</div>
+    <div class="pname">THE WANDERER</div>
+  </div>
+  <div id="gold">&#9679; 0</div>
+  <div id="floor-name">THE CATACOMBS</div>
+  <div id="boss-bar">
+    <div id="boss-name">THE BONE TYRANT</div>
+    <div id="boss-track"><div id="boss-fill"></div></div>
+  </div>
+  <div id="minimap-wrap"><canvas id="minimap" width="150" height="150"></canvas></div>
+
+  <div id="bottom-hud">
+    <div id="xp-track"><div id="xp-fill"></div><div id="xp-text">0 / 80</div></div>
+    <div id="bars-row">
+      <div class="orb" id="hp-orb"><div class="fill" id="hp-fill"></div><div class="shine"></div><div class="num" id="hp-num">120</div></div>
+      <div id="hotbar">
+        <div class="skill" id="sk-0">
+          <svg viewBox="0 0 48 48"><path d="M8 34 Q24 8 40 26" fill="none" stroke="#e8d8b0" stroke-width="4" stroke-linecap="round"/><path d="M10 38 Q26 14 42 30" fill="none" stroke="#c05030" stroke-width="2.5" stroke-linecap="round" opacity=".85"/><rect x="6" y="34" width="9" height="4" rx="1" fill="#8a6a3a" transform="rotate(-35 10 36)"/></svg>
+          <div class="cdmask"></div><div class="cdnum"></div><span class="key">1</span><span class="cost">8</span>
+        </div>
+        <div class="skill" id="sk-1">
+          <svg viewBox="0 0 48 48"><circle cx="30" cy="20" r="10" fill="#ff7a2a"/><circle cx="30" cy="20" r="6" fill="#ffd23e"/><path d="M6 40 Q16 32 22 26" stroke="#c04a20" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="14" cy="34" r="3" fill="#ff9a4a"/></svg>
+          <div class="cdmask"></div><div class="cdnum"></div><span class="key">2</span><span class="cost">14</span>
+        </div>
+        <div class="skill" id="sk-2">
+          <svg viewBox="0 0 48 48"><g stroke="#a8e4ff" stroke-width="3.4" stroke-linecap="round"><path d="M24 8v32"/><path d="M10 16l28 16"/><path d="M38 16L10 32"/></g><g stroke="#6fc0ff" stroke-width="2" stroke-linecap="round"><path d="M24 14l-6-6M24 14l6-6M24 34l-6 6M24 34l6 6"/></g></svg>
+          <div class="cdmask"></div><div class="cdnum"></div><span class="key">3</span><span class="cost">20</span>
+        </div>
+        <div class="skill" id="sk-3">
+          <svg viewBox="0 0 48 48"><path d="M24 40V14" stroke="#e8d8b0" stroke-width="4" stroke-linecap="round"/><path d="M12 24l12-14 12 14" fill="none" stroke="#e8d8b0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 44h20" stroke="#c05030" stroke-width="4" stroke-linecap="round"/></svg>
+          <div class="cdmask"></div><div class="cdnum"></div><span class="key">4</span><span class="cost">16</span>
+        </div>
+        <div class="skill potion" id="sk-pot">
+          <svg viewBox="0 0 48 48"><path d="M20 6h8v8l7 14a10 10 0 0 1-9 15h-4a10 10 0 0 1-9-15l7-14z" fill="#3a1018" stroke="#c8b090" stroke-width="2.4"/><path d="M15 30h18a8 8 0 0 1-7 12h-4a8 8 0 0 1-7-12z" fill="#e0304a"/><circle cx="21" cy="35" r="2.4" fill="#ff8090"/></svg>
+          <div class="cdmask"></div><div class="cdnum"></div><span class="key">SPACE</span><span class="cost" id="pot-count">3</span>
+        </div>
+      </div>
+      <div class="orb" id="mp-orb"><div class="fill" id="mp-fill"></div><div class="shine"></div><div class="num" id="mp-num">80</div></div>
+    </div>
+  </div>
+
+  <div id="hint">
+    <b>WASD</b> move &nbsp;<b>CLICK</b> move / attack &nbsp;<b>1-4</b> skills<br>
+    <b>SPACE</b> potion &nbsp;<b>I</b> inventory &nbsp;<b>M</b> mute
+  </div>
+  <div id="toasts"></div>
+</div>
+
+<div id="ftext"></div>
+
+<div id="inventory">
+  <h2>INVENTORY</h2>
+  <div class="inv-cols">
+    <div class="inv-col">
+      <h3>EQUIPPED</h3>
+      <div id="equip-slots">
+        <div class="eq-slot" id="eq-weapon" data-slot="weapon"><span class="lab">WEAPON</span></div>
+        <div class="eq-slot" id="eq-armor" data-slot="armor"><span class="lab">ARMOR</span></div>
+        <div class="eq-slot" id="eq-ring" data-slot="ring"><span class="lab">RING</span></div>
+      </div>
+    </div>
+    <div class="inv-col">
+      <h3>PACK</h3>
+      <div id="bag-grid"></div>
+    </div>
+  </div>
+  <div id="stats-panel">
+    <h3>ATTRIBUTES</h3>
+    <div id="stats-list"></div>
+  </div>
+  <div class="inv-hint">CLICK AN ITEM TO EQUIP &nbsp;&middot;&nbsp; CLICK AN EQUIPPED ITEM TO UNEQUIP &nbsp;&middot;&nbsp; I TO CLOSE</div>
+</div>
+
+<div id="tooltip"></div>
+
+<div id="title-screen">
+  <h1>SANCTUM<br>OF BONES</h1>
+  <div class="sub">A DIABLO-STYLE ACTION RPG</div>
+  <div class="lore">
+    Five floors of catacombs lie beneath the ruined chapel. Gold, steel and forbidden
+    trinkets litter the dark. Somewhere below, the Bone Tyrant waits on his throne of the slain.
+  </div>
+  <button id="btn-start">ENTER THE DUNGEON</button>
+  <div class="controls">
+    <div><b>WASD / CLICK</b> move</div>
+    <div><b>LEFT CLICK</b> attack</div>
+    <div><b>1 &ndash; 4</b> skills</div>
+    <div><b>SPACE</b> potion</div>
+    <div><b>I</b> inventory</div>
+    <div><b>M</b> mute sound</div>
+  </div>
+</div>
+
+<div class="screen" id="death-screen">
+  <h1>YOU HAVE DIED</h1>
+  <div class="summary">
+    <div><span>Floor reached</span><b id="d-floor">1</b></div>
+    <div><span>Level</span><b id="d-level">1</b></div>
+    <div><span>Kills</span><b id="d-kills">0</b></div>
+    <div><span>Gold</span><b id="d-gold">0</b></div>
+  </div>
+  <button class="btn-retry">RISE AGAIN</button>
+</div>
+
+<div class="screen" id="victory-screen">
+  <h1>THE TYRANT<br>IS SLAIN</h1>
+  <div class="summary">
+    <div><span>Level</span><b id="v-level">1</b></div>
+    <div><span>Kills</span><b id="v-kills">0</b></div>
+    <div><span>Gold</span><b id="v-gold">0</b></div>
+    <div><span>Time</span><b id="v-time">0:00</b></div>
+  </div>
+  <button class="btn-retry">PLAY AGAIN</button>
+</div>
